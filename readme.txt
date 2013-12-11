@@ -5,7 +5,7 @@ Tags: google analytics, analytics, analytics opt-out, analytics opt out
 Version: 0.1
 Requires at least: 3.7
 Stable tag: 0.1
-Tested up to: 3.7
+Tested up to: 3.8
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
