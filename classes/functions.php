@@ -6,14 +6,10 @@
  * @return bool
  */
 function gaoo_yoast_plugin_active() {
-	global $ga_admin;
+	global $ga_admin, $yoast_ga;
 
-	if ( ! isset( $ga_admin ) ) {
-		return false;
-	}
-
-	if ( ! $ga_admin instanceof GA_Admin ) {
-		return false;
+	if ( ( isset( $ga_admin ) && is_a( $ga_admin, 'GA_Admin' ) ) OR ( isset( $yoast_ga ) && is_a( $yoast_ga, 'GA_Filter' ) ) ) {
+		return true;
 	}
 
 	return true;
@@ -32,19 +28,30 @@ function gaoo_get_yoast_ua() {
 		return '';
 	}
 
-	global $ga_admin;
+	if ( is_admin() ) {
+		global $ga_admin;
 
-	if ( ! isset( $ga_admin->optionname ) ) {
+		if ( ! isset( $ga_admin->optionname ) ) {
+			return '';
+		}
+
+		$yoast_settings = get_option( $ga_admin->optionname );
+
+		if ( ! isset( $yoast_settings['uastring'] ) ) {
+			return '';
+		}
+
+		return $yoast_settings['uastring'];
+	}
+
+	global $yoast_ga;
+
+	if ( ! isset( $yoast_ga->options['uastring'] ) ) {
 		return '';
 	}
 
-	$yoast_settings = get_option( $ga_admin->optionname );
+	return $yoast_ga->options['uastring'];
 
-	if ( ! isset( $yoast_settings['uastring'] ) ) {
-		return '';
-	}
-
-	return $yoast_settings['uastring'];
 }
 
 /**
@@ -54,20 +61,8 @@ function gaoo_get_yoast_ua() {
  */
 function gaoo_get_ua_code() {
 
-	$use_yoast = get_option( 'gaoo_yoast', null );
-
-	// if the plugin is used the first time, this value is NULL
-	if ( is_null( $use_yoast ) ) {
-		$use_yoast = 1;
-	}
-
-	// if yoast should be used, try to get the ua code from the plugin
-	if ( 1 == intval( $use_yoast ) ) {
-		$yoast_code = gaoo_get_yoast_ua();
-
-		if ( ! empty( $yoast_code ) ) {
-			return apply_filters( 'gaoo_get_ua_code', $yoast_code );
-		}
+	if ( gaoo_yoast_plugin_active() ) {
+		return apply_filters( 'gaoo_get_ua_code', gaoo_get_yoast_ua() );
 	}
 
 	// if yoast returns an empty string OR if the checkbox was set to 0 return the textbox content

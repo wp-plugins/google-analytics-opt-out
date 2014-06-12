@@ -1,13 +1,14 @@
 === Google Analytics Opt-Out ===
 Contributors: wp-buddy
-Donate link: http://wp-buddy.com/products/plugins/google-analytics-opt-out
+Donate link: http://wp-buddy.com/products/plugins/google-analytics-opt-out/
 Tags: google analytics, analytics, analytics opt-out, analytics opt out
-Version: 0.1
+Version: 0.1.1
 Requires at least: 3.7
-Stable tag: 0.1
-Tested up to: 3.8
+Stable tag: 0.1.1
+Tested up to: 3.9.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
 
 Provides an Opt-Out functionality for Google Analytics
 
@@ -16,6 +17,8 @@ Provides an Opt-Out functionality for Google Analytics
 This plugin provides an Opt-Out functionality for Google Analytics by setting a cookie that prevents analytics.js to collect data.
 
 Works perfectly together with the [Yoast Analytics Plugin](http://wordpress.org/plugins/google-analytics-for-wordpress/ "Yoast Analytics Plugin").
+
+Please by the Pro Version of the [Google Analytics Opt Out WordPress Plugin](http://wp-buddy.com/products/plugins/google-analytics-opt-out/ "Google Analytics Opt Out WordPress Plugin") to even keep the free version up-to-date! Thanks!
 
 == Installation ==
 
@@ -58,6 +61,11 @@ if ( function_exists( 'gaoo_js' ) ) {
 3. This is the settings page
 
 == Changelog ==
+
+= 0.2 =
+* Fixed the issue that error message still shows shows up
+* Added/replaced some translations
+* Fixed an issue that Yoasts Analytics for WordPress plugin has changed the option name
 
 = 0.1 =
 * The first version

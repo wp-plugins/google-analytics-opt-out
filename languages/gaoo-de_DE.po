@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Google Analytics Opt-Out\n"
-"POT-Creation-Date: 2013-11-07 16:04+0100\n"
-"PO-Revision-Date: 2013-11-07 16:04+0100\n"
+"POT-Creation-Date: 2014-06-12 08:09+0100\n"
+"PO-Revision-Date: 2014-06-12 08:11+0100\n"
 "Last-Translator: WP-Buddy <info@wp-buddy.com>\n"
 "Language-Team: WP-Buddy <info@wp-buddy.com>\n"
 "Language: de_DE\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Textdomain-Support: yes\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.6.5\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_c;_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
 "esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../classes/admin.php:11
+#: ../classes/admin.php:10
 msgid ""
 "To use the Google Analytics Opt-Out Plugin please enter an UA-Code on the "
 "settings page."
@@ -26,15 +26,24 @@ msgstr ""
 "Um das Google Analytics Opt-Oput Plugin zu benutzen müssen Sie einen UA-Code "
 "auf der Einstellungsseite eingeben."
 
-#: ../classes/admin.php:30
+#: ../classes/admin.php:14
+msgid ""
+"To use the Google Analytics Opt-Out Plugin please enter an UA-Code on the "
+"settings page of \"Google Analytics for WordPress\" configuration page."
+msgstr ""
+"Um das Google Analytics Opt-Out Plugin nutzen zu können musst Du Deinen UA-"
+"Code auf der Einstellungsseite des \"Google Analytics for WordPress\" "
+"Konfigurationsseite eingeben."
+
+#: ../classes/admin.php:38
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: ../classes/admin.php:31
+#: ../classes/admin.php:39
 msgid "More by WP-Buddy"
 msgstr "Mehr von WP-Buddy"
 
-#: ../classes/scripts.php:25
+#: ../classes/scripts.php:47
 msgid ""
 "Thanks. We have set a cookie so that Google Analytics data collection will "
 "be disabled on your next visit."
@@ -74,12 +83,20 @@ msgstr ""
 "sicher, dass der Analytics Code NACH dem Opt-Out-Code eingebunden wird. Der "
 "Opt-Out-Code beginnt mit <code>/* Google Analytics Opt-Out</code>."
 
-#: ../classes/shortcodes.php:49
-msgid "Click here to opt out."
-msgstr "Zum Opt-Out hier klicken."
-
-#: ../classes/shortcodes.php:55
+#: ../classes/shortcodes.php:52
 msgid "No UA-Code has been entered. Please ask the admin to solve this issue!"
 msgstr ""
 "Es wurde kein UA-Code eingegeben. Bitte Fragen Sie beim Administrator nach "
 "um dieses Problem zu beheben!"
+
+#: ../classes/shortcodes.php:56
+msgid "Click here to opt out."
+msgstr "Zum Opt-Out hier klicken."
+
+#: ../google-analytics-opt-out.php:35
+msgid "Google Analytics Opt-Out"
+msgstr "Google Analytics Opt-Out"
+
+#: ../google-analytics-opt-out.php:36
+msgid "Provides an Opt-Out functionality for Google Analytics"
+msgstr "Stellt eine Opt-Out-Funktion für Google Analytics bereit."

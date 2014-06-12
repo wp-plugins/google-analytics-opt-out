@@ -37,22 +37,24 @@ add_action( 'init', 'gaoo_init_shortcodes' );
  *
  * @param array  $atts
  * @param string $content
+ * @param string $shortcode_name
  *
  * @since 0.1
  *
  * @return string
  */
-function gaoo_shortcode( $atts, $content = '' ) {
-	//$atts = shortcode_atts( array(), $atts );
-
-	if ( empty( $content ) ) {
-		$content = __( 'Click here to opt out.', 'gaoo' );
-	}
+function gaoo_shortcode( $atts, $content = '', $shortcode_name ) {
+	//$atts = shortcode_atts( array(), $atts, $shortcode_name );
 
 	$ua_code = gaoo_get_ua_code();
 
 	if ( empty( $ua_code ) ) {
-		return '<span style="cursor: help; border: 0 none; border-bottom-width: 1px; border-style: dashed;" title="' . __( 'No UA-Code has been entered. Please ask the admin to solve this issue!', 'gaoo' ) . '">' . do_shortcode( $content ) . '</span>';
+		$message = __( 'No UA-Code has been entered. Please ask the admin to solve this issue!', 'gaoo' );
+		return '<span style="cursor: help; border: 0 none; border-bottom-width: 1px; border-style: dashed;" title="' . $message . '">' . $message . '</span>';
+	}
+
+	if ( empty( $content ) ) {
+		$content = __( 'Click here to opt out.', 'gaoo' );
 	}
 
 	return '<a class="gaoo-opt-out google-analytics-opt-out" href="javascript:gaoo_analytics_optout();">' . do_shortcode( $content ) . '</a>';
@@ -61,4 +63,6 @@ function gaoo_shortcode( $atts, $content = '' ) {
 /**
  * Doing shortcodes in the text widget, too
  */
-add_filter( 'widget_text', 'do_shortcode' );
+if ( false !== has_filter( 'widget_text', 'do_shortcode' ) ) {
+	add_filter( 'widget_text', 'do_shortcode' );
+}

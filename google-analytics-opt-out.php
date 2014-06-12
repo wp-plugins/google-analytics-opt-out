@@ -3,10 +3,12 @@
 Plugin Name: Google Analytics Opt-Out
 Plugin URI: http://wp-buddy.com/products/plugins/google-analytics-opt-out
 Description: Provides an Opt-Out functionality for Google Analytics
-Version: 0.1
+Version: 0.1.1
 Author: WP-Buddy
 Author URI: http://wp-buddy.com
 License: GPL2
+Text Domain: gaoo
+Domain Path: /languages/
 
 Copyright 2013  WP-Buddy  (email : info@wp-buddy.com)
 
@@ -29,11 +31,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// for translations only
+__( 'Google Analytics Opt-Out', 'gaoo' );
+__( 'Provides an Opt-Out functionality for Google Analytics', 'gaoo' );
+
 define( 'GAOO_FILE', __FILE__ );
 define( 'GAOO_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'GAOO_URL', trailingslashit( plugins_url() ) . trailingslashit( dirname( plugin_basename( __FILE__ ) ) ) );
 
-load_plugin_textdomain( 'gaoo', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+add_action( 'init', 'gaoo_add_translation' );
+function gaoo_add_translation() {
+	load_plugin_textdomain( 'gaoo', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+}
 
 require_once GAOO_PATH . 'classes/functions.php';
 require_once GAOO_PATH . 'classes/admin.php';

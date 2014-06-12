@@ -5,10 +5,18 @@ function gaoo_admin_notice() {
 	if ( ! empty( $code ) ) {
 		return;
 	}
+
+	$link    = admin_url( 'options-general.php?page=gaoo-options' );
+	$message = __( 'To use the Google Analytics Opt-Out Plugin please enter an UA-Code on the settings page.', 'gaoo' );
+
+	if ( gaoo_yoast_plugin_active() ) {
+		$link    = admin_url( 'options-general.php?page=google-analytics-for-wordpress' );
+		$message = __( 'To use the Google Analytics Opt-Out Plugin please enter an UA-Code on the settings page of "Google Analytics for WordPress" configuration page.', 'gaoo' );
+	}
 	?>
 	<div class="error">
 		<p>
-			<a href="<?php echo admin_url( 'options-general.php?page=gaoo-options' ); ?>"><?php _e( 'To use the Google Analytics Opt-Out Plugin please enter an UA-Code on the settings page.', 'gaoo' ); ?></a>
+			<a href="<?php echo $link; ?>"><?php echo $message; ?></a>
 		</p>
 	</div>
 <?php
