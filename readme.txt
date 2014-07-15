@@ -2,10 +2,10 @@
 Contributors: wp-buddy
 Donate link: http://wp-buddy.com/products/plugins/google-analytics-opt-out/
 Tags: google analytics, analytics, analytics opt-out, analytics opt out
-Version: 0.1.1
+Version: 0.1.2
 Requires at least: 3.7
-Stable tag: 0.1.1
-Tested up to: 3.9.1
+Stable tag: 0.1.2
+Tested up to: 4.0
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -62,7 +62,10 @@ if ( function_exists( 'gaoo_js' ) ) {
 
 == Changelog ==
 
-= 0.2 =
+= 0.1.2 =
+* Works again with the Google Analytics plugin by Yoast
+
+= 0.1.1 =
 * Fixed the issue that error message still shows shows up
 * Added/replaced some translations
 * Fixed an issue that Yoasts Analytics for WordPress plugin has changed the option name

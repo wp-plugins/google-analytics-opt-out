@@ -6,13 +6,66 @@
  * @return bool
  */
 function gaoo_yoast_plugin_active() {
-	global $ga_admin, $yoast_ga;
+	if ( is_admin() ) {
+		global $ga_admin;
 
-	if ( ( isset( $ga_admin ) && is_a( $ga_admin, 'GA_Admin' ) ) OR ( isset( $yoast_ga ) && is_a( $yoast_ga, 'GA_Filter' ) ) ) {
+		if ( ! isset( $ga_admin ) ) {
+			return false;
+		}
+
+		if ( ! $ga_admin instanceof GA_Admin ) {
+			return false;
+		}
+
 		return true;
 	}
+	else {
+		global $yoast_ga;
 
-	return true;
+		if ( ! isset( $yoast_ga ) ) {
+			return false;
+		}
+
+		if ( ! $yoast_ga instanceof GA_Filter ) {
+			return false;
+		}
+
+		return true;
+	}
+}
+
+/**
+ * Checks if the Yoast Analytics Plugin is active
+ * @since 0.1.2
+ * @return bool
+ */
+function gaoop_yoast_plugin_active() {
+	if ( is_admin() ) {
+		global $ga_admin;
+
+		if ( ! isset( $ga_admin ) ) {
+			return false;
+		}
+
+		if ( ! $ga_admin instanceof GA_Admin ) {
+			return false;
+		}
+
+		return true;
+	}
+	else {
+		global $yoast_ga;
+
+		if ( ! isset( $yoast_ga ) ) {
+			return false;
+		}
+
+		if ( ! $yoast_ga instanceof GA_Filter ) {
+			return false;
+		}
+
+		return true;
+	}
 }
 
 /**
@@ -24,7 +77,7 @@ function gaoo_yoast_plugin_active() {
  */
 function gaoo_get_yoast_ua() {
 
-	if ( ! gaoo_yoast_plugin_active() ) {
+	if ( ! gaoop_yoast_plugin_active() ) {
 		return '';
 	}
 
@@ -36,21 +89,24 @@ function gaoo_get_yoast_ua() {
 		}
 
 		$yoast_settings = get_option( $ga_admin->optionname );
+	}
+	else {
+		global $yoast_ga;
 
-		if ( ! isset( $yoast_settings['uastring'] ) ) {
+		if ( ! isset( $yoast_ga->options ) ) {
 			return '';
 		}
 
-		return $yoast_settings['uastring'];
+		$yoast_settings = $yoast_ga->options;
+
 	}
 
-	global $yoast_ga;
 
-	if ( ! isset( $yoast_ga->options['uastring'] ) ) {
+	if ( ! isset( $yoast_settings['uastring'] ) ) {
 		return '';
 	}
 
-	return $yoast_ga->options['uastring'];
+	return $yoast_settings['uastring'];
 
 }
 
