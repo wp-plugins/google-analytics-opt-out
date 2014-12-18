@@ -2,10 +2,10 @@
 Contributors: wp-buddy
 Donate link: http://wp-buddy.com/products/plugins/google-analytics-opt-out/
 Tags: google analytics, analytics, analytics opt-out, analytics opt out
-Version: 0.1.2
+Version: 0.1.3
 Requires at least: 3.7
-Stable tag: 0.1.2
-Tested up to: 4.0
+Stable tag: 0.1.3
+Tested up to: 4.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,9 @@ if ( function_exists( 'gaoo_js' ) ) {
 3. This is the settings page
 
 == Changelog ==
+
+= 0.1.3 =
+* Made the plugin compatible with the latest version of the Google Analytics plugin by Yoast
 
 = 0.1.2 =
 * Works again with the Google Analytics plugin by Yoast

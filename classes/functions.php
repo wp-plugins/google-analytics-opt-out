@@ -6,66 +6,7 @@
  * @return bool
  */
 function gaoo_yoast_plugin_active() {
-	if ( is_admin() ) {
-		global $ga_admin;
-
-		if ( ! isset( $ga_admin ) ) {
-			return false;
-		}
-
-		if ( ! $ga_admin instanceof GA_Admin ) {
-			return false;
-		}
-
-		return true;
-	}
-	else {
-		global $yoast_ga;
-
-		if ( ! isset( $yoast_ga ) ) {
-			return false;
-		}
-
-		if ( ! $yoast_ga instanceof GA_Filter ) {
-			return false;
-		}
-
-		return true;
-	}
-}
-
-/**
- * Checks if the Yoast Analytics Plugin is active
- * @since 0.1.2
- * @return bool
- */
-function gaoop_yoast_plugin_active() {
-	if ( is_admin() ) {
-		global $ga_admin;
-
-		if ( ! isset( $ga_admin ) ) {
-			return false;
-		}
-
-		if ( ! $ga_admin instanceof GA_Admin ) {
-			return false;
-		}
-
-		return true;
-	}
-	else {
-		global $yoast_ga;
-
-		if ( ! isset( $yoast_ga ) ) {
-			return false;
-		}
-
-		if ( ! $yoast_ga instanceof GA_Filter ) {
-			return false;
-		}
-
-		return true;
-	}
+	return defined( 'GAWP_VERSION' );
 }
 
 /**
@@ -77,37 +18,29 @@ function gaoop_yoast_plugin_active() {
  */
 function gaoo_get_yoast_ua() {
 
-	if ( ! gaoop_yoast_plugin_active() ) {
+	if ( ! gaoo_yoast_plugin_active() ) {
 		return '';
 	}
+
+	$ua_code = '';
 
 	if ( is_admin() ) {
-		global $ga_admin;
+		global $yoast_ga_admin;
 
-		if ( ! isset( $ga_admin->optionname ) ) {
-			return '';
+		if ( method_exists( $yoast_ga_admin, 'get_tracking_code' ) ) {
+			$ua_code = $yoast_ga_admin->get_tracking_code();
 		}
 
-		$yoast_settings = get_option( $ga_admin->optionname );
-	}
-	else {
-		global $yoast_ga;
+	} else {
+		global $yoast_ga_frontend;
 
-		if ( ! isset( $yoast_ga->options ) ) {
-			return '';
+		if ( method_exists( $yoast_ga_frontend, 'get_tracking_code' ) ) {
+			$ua_code = $yoast_ga_frontend->get_tracking_code();
 		}
 
-		$yoast_settings = $yoast_ga->options;
-
 	}
 
-
-	if ( ! isset( $yoast_settings['uastring'] ) ) {
-		return '';
-	}
-
-	return $yoast_settings['uastring'];
-
+	return $ua_code;
 }
 
 /**
