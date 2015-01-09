@@ -2,9 +2,9 @@
 Contributors: wp-buddy
 Donate link: http://wp-buddy.com/products/plugins/google-analytics-opt-out/
 Tags: google analytics, analytics, analytics opt-out, analytics opt out
-Version: 0.1.3
+Version: 0.1.4
 Requires at least: 3.7
-Stable tag: 0.1.3
+Stable tag: 0.1.4
 Tested up to: 4.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -24,8 +24,7 @@ Please by the Pro Version of the [Google Analytics Opt Out WordPress Plugin](htt
 
 * Install and activate the plugin via your WordPress Administration panel
 * Go the "Settings" -> "Analytics Opt Out" and enter your UA-code (you don't need this step if Yoasts Analytics plugin is active)
-*
-* IMPORTANT: Check the sourcecode of your website and make sure that the Analytics code follows AFTER the opt-out code. Otherwise the Opt-Out feature will not work.
+* IMPORTANT: Check the sourcecode of your website and make sure that the Analytics code is entered AFTER the opt-out code. Otherwise the Opt-Out feature will not work.
 * Read the FAQ for more information.
 
 == Frequently Asked Questions ==
@@ -61,6 +60,10 @@ if ( function_exists( 'gaoo_js' ) ) {
 3. This is the settings page
 
 == Changelog ==
+
+= 0.1.4 =
+* Solves the issue that the opt-out link does not appear when the UA-Code was entered manually.
+* Also fixes an issue that the tracking code could not be found due to some code changes of the Yoast Google Analytics for WordPress Plugin (Yoast_GA_Frontend class no longer extends Yoast_GA_Options)
 
 = 0.1.3 =
 * Made the plugin compatible with the latest version of the Google Analytics plugin by Yoast

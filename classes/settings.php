@@ -104,9 +104,8 @@ function gaoo_options_yoast() {
  */
 function gaoo_options_property() {
 	$yoast_active = gaoo_yoast_plugin_active();
-	$option       = get_option( 'gaoo_yoast', null );
 
-	if ( $yoast_active && 1 == $option ) {
+	if ( $yoast_active && (bool) get_option( 'gaoo_yoast', null ) ) {
 		$value = gaoo_get_yoast_ua();
 	}
 	else {

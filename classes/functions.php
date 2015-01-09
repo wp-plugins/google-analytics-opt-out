@@ -25,17 +25,23 @@ function gaoo_get_yoast_ua() {
 	$ua_code = '';
 
 	if ( is_admin() ) {
+		/**
+		 * @var Yoast_GA_Admin $yoast_ga_admin
+		 */
 		global $yoast_ga_admin;
 
-		if ( method_exists( $yoast_ga_admin, 'get_tracking_code' ) ) {
+		if ( isset( $yoast_ga_admin ) && method_exists( $yoast_ga_admin, 'get_tracking_code' ) ) {
 			$ua_code = $yoast_ga_admin->get_tracking_code();
 		}
 
 	} else {
-		global $yoast_ga_frontend;
 
-		if ( method_exists( $yoast_ga_frontend, 'get_tracking_code' ) ) {
-			$ua_code = $yoast_ga_frontend->get_tracking_code();
+		if ( class_exists( 'Yoast_GA_Options' ) ) {
+			$yoast_ga_options = Yoast_GA_Options::instance();
+
+			if ( method_exists( $yoast_ga_options, 'get_tracking_code' ) ) {
+				$ua_code = $yoast_ga_options->get_tracking_code();
+			}
 		}
 
 	}
@@ -50,7 +56,7 @@ function gaoo_get_yoast_ua() {
  */
 function gaoo_get_ua_code() {
 
-	if ( gaoo_yoast_plugin_active() ) {
+	if ( gaoo_yoast_plugin_active() && (bool) get_option( 'gaoo_yoast', 0 ) ) {
 		return apply_filters( 'gaoo_get_ua_code', gaoo_get_yoast_ua() );
 	}
 
