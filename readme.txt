@@ -1,5 +1,5 @@
 === Google Analytics Opt-Out ===
-Contributors: wp-buddy
+Contributors: wp-buddy, floriansimeth
 Donate link: http://wp-buddy.com/products/plugins/google-analytics-opt-out/
 Tags: google analytics, analytics, analytics opt-out, analytics opt out
 Version: 0.1.5
