@@ -2,10 +2,10 @@
 Contributors: wp-buddy
 Donate link: http://wp-buddy.com/products/plugins/google-analytics-opt-out/
 Tags: google analytics, analytics, analytics opt-out, analytics opt out
-Version: 0.1.4
+Version: 0.1.5
 Requires at least: 3.7
-Stable tag: 0.1.4
-Tested up to: 4.2
+Stable tag: 0.1.5
+Tested up to: 4.3
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,6 +60,9 @@ if ( function_exists( 'gaoo_js' ) ) {
 3. This is the settings page
 
 == Changelog ==
+
+= 0.1.5 =
+* Added Spanish translation
 
 = 0.1.4 =
 * Solves the issue that the opt-out link does not appear when the UA-Code was entered manually.
